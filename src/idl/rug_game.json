@@ -1,0 +1,225 @@
+{
+  "version": "0.1.0",
+  "name": "rug_game",
+  "instructions": [
+    {
+      "name": "create",
+      "accounts": [
+        {
+          "name": "ruggedAccount",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "authority",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "charge",
+      "accounts": [
+        {
+          "name": "ruggedAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "decharge",
+      "accounts": [
+        {
+          "name": "ruggedAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "setTransaction",
+      "accounts": [
+        {
+          "name": "ruggedAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "txId",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "clearTransaction",
+      "accounts": [
+        {
+          "name": "ruggedAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "mintNft",
+      "accounts": [
+        {
+          "name": "mintAuthority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "metadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "creatorKey",
+          "type": "publicKey"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "symbol",
+          "type": "string"
+        },
+        {
+          "name": "uri",
+          "type": "string"
+        },
+        {
+          "name": "mutable",
+          "type": "bool"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "RuggedAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "charged",
+            "type": "bool"
+          },
+          {
+            "name": "tokenAccount",
+            "type": {
+              "option": "publicKey"
+            }
+          },
+          {
+            "name": "staked",
+            "type": "bool"
+          },
+          {
+            "name": "transaction",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "MintFailed",
+      "msg": "Mint failed!"
+    },
+    {
+      "code": 6001,
+      "name": "MetadataCreateFailed",
+      "msg": "Metadata account create failed!"
+    },
+    {
+      "code": 6002,
+      "name": "SetAuthorityFailed",
+      "msg": "Staking set authority failed!"
+    },
+    {
+      "code": 6003,
+      "name": "TransferFailed",
+      "msg": "Staking transfer failed!"
+    }
+  ],
+  "metadata": {
+    "address": "66mXdV36Y1tGsBng2r51m2imAW2DdH8daqynigafBsvb"
+  }
+}
